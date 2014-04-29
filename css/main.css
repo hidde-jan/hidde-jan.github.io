@@ -1,0 +1,164 @@
+/*****************************************************************************/
+/*
+/* Common
+/*
+/*****************************************************************************/
+@charset "UTF-8";
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body { height: 100%; }
+
+body {
+  font-size: 16px;
+  margin: 40px auto;
+  padding: 0;
+  background: #dedede;
+  text-shadow: 1px 1px white;
+  color: #444;
+  width: 600px;
+}
+
+h1, h2,
+.blank {
+  font-family: 'Crimson Text', serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0em;
+  word-spacing: 0em;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0;
+}
+
+h1 a {
+  color: #444;
+  position: relative;
+  text-decoration: none;
+}
+
+h1 a:hover {
+  color: black;
+  border-bottom: 1px black dotted;
+}
+
+h1 a:active {
+  top: 2px;
+}
+
+h2 {
+  margin: 0.7em 0;
+  padding: 0;
+  font-size: 1.4em;
+}
+
+.blank {
+  margin: 100px 0;
+  font-size: 2.2em;
+  text-align: center;
+}
+
+.container {
+  margin: auto;
+}
+
+.grid {
+  float: left;
+  width: 50%;
+}
+
+p {
+  margin: 0.7em 0;
+}
+
+ul {
+  margin: 0.7em 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul li {
+  line-height: 1.6;
+}
+
+li:before {
+  content: "—";
+  color: black;
+}
+
+a {
+  color: #5a5a5a;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+  border-bottom: 1px black dotted;
+}
+
+
+/* For modern browsers */
+.cf:before,
+.cf:after {
+  content:"";
+  display:table;
+}
+
+.cf:after {
+  clear:both;
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+.cf {
+  zoom:1;
+}
+
+/*****************************************************************************/
+/*
+/* Posts
+/*
+/*****************************************************************************/
+
+/* standard */
+.post {
+  padding-bottom: 0.7em;
+}
+
+.post pre {
+  border: 1px solid #ddd;
+  background-color: #eef;
+  padding: 0 .4em;
+}
+
+.post ul, .post ol {
+  margin-left: 1.35em;
+}
+
+.post code {
+  border: 1px solid #ddd;
+  background-color: #eef;
+  padding: 0 .2em;
+}
+
+.post pre code {
+  border: none;
+}
+
+/* terminal */
+.post pre.terminal {
+  border: 1px solid #000;
+  background-color: #333;
+  color: #FFF;
+}
+
+.post pre.terminal code {
+  background-color: #333;
+}
