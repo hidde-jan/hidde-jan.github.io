@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -e # halt script on error
+
+echo "[*] Building site"
+bin/jekyll build
+
+echo ""
+echo "[*] Linting site"
+bin/htmlproof _site
