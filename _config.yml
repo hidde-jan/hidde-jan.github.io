@@ -1,3 +1,5 @@
 name: hidde-jan.nl
 markdown: redcarpet
 pygments: true
+exclude:
+  - vendor

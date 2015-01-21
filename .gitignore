@@ -1,1 +1,6 @@
 _site
+vendor/bundle
+.bundle
+bin
+.python-version
+Gemfile*
