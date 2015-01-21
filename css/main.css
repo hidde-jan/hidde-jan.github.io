@@ -75,6 +75,11 @@ h2 {
   width: 50%;
 }
 
+.grid-3 {
+  float: left;
+  width: 33.3%;
+}
+
 p {
   margin: 0.7em 0;
 }
