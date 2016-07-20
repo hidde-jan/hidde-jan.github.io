@@ -3,7 +3,6 @@
 /* Common
 /*
 /*****************************************************************************/
-@charset "UTF-8";
 
 /* Global Reset */
 * {
@@ -100,8 +99,12 @@ li:before {
 }
 
 a {
-  color: #5a5a5a;
+  color: #555;
   text-decoration: none;
+}
+
+a[href] {
+  border-bottom: 1px #555 dotted;
 }
 
 a:hover {
@@ -124,46 +127,4 @@ a:hover {
 /* For IE 6/7 (trigger hasLayout) */
 .cf {
   zoom:1;
-}
-
-/*****************************************************************************/
-/*
-/* Posts
-/*
-/*****************************************************************************/
-
-/* standard */
-.post {
-  padding-bottom: 0.7em;
-}
-
-.post pre {
-  border: 1px solid #ddd;
-  background-color: #eef;
-  padding: 0 .4em;
-}
-
-.post ul, .post ol {
-  margin-left: 1.35em;
-}
-
-.post code {
-  border: 1px solid #ddd;
-  background-color: #eef;
-  padding: 0 .2em;
-}
-
-.post pre code {
-  border: none;
-}
-
-/* terminal */
-.post pre.terminal {
-  border: 1px solid #000;
-  background-color: #333;
-  color: #FFF;
-}
-
-.post pre.terminal code {
-  background-color: #333;
 }

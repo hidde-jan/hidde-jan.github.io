@@ -9,20 +9,21 @@
     <!-- Google font -->
     <link href="http://fonts.googleapis.com/css?family=Crimson+Text:regular" rel="stylesheet" type="text/css" >
 
-    <!-- syntax highlighting CSS -->
-    <link rel="stylesheet" href="/css/syntax.css">
-
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
   </head>
   <body>
-    <h1><a title="Warning: this link does (almost) nothing" href="/">{{ site.name }}</a></h1>
+    <nav>
+      <h1><a title="Warning: this link does (almost) nothing" href="/">{{ site.name }}</a></h1>
+    </nav>
 
     <p class="blank">
       [This space is intentionally left blank]
     </p>
 
-    {{ content }}
+    <article class="{{ page.class }}">
+      {{ content }}
+    </article>
 
   </body>
 </html>

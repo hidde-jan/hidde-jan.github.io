@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+#
+# Run build process.
+
 set -e # halt script on error
 
 echo "[*] Building site"
@@ -6,4 +9,4 @@ bin/jekyll build
 
 echo ""
 echo "[*] Linting site"
-bin/htmlproof _site
+bin/htmlproofer --http-status-ignore 999 _site

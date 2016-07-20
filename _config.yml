@@ -1,5 +1,9 @@
 name: hidde-jan.nl
-markdown: redcarpet
-highlighter: pygments
+permalink: /:year-:month-:day-:title.html
 exclude:
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - bin
+  - script
   - vendor
