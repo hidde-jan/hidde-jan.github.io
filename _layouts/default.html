@@ -1,28 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>{{ page.title }}</title>
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width" />
 
     <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Crimson+Text"
+      rel="stylesheet"
+    />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/main.css" />
   </head>
   <body>
     <nav>
-      <h1><a title="Warning: this link does (almost) nothing" href="/">{{ site.name }}</a></h1>
+      <h1>
+        <a title="Warning: this link does (almost) nothing" href="/">
+          {{ site.name }}
+        </a>
+      </h1>
     </nav>
 
     <p class="blank">
-      [This space is intentionally left blank]
+      [This space intentionally left blank]
     </p>
 
     <article class="{{ page.class }}">
       {{ content }}
     </article>
-
   </body>
 </html>
