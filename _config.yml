@@ -1,9 +1,0 @@
-name: hidde-jan.nl
-permalink: /:year-:month-:day-:title.html
-exclude:
-  - CNAME
-  - Gemfile
-  - Gemfile.lock
-  - bin
-  - script
-  - vendor

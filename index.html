@@ -1,62 +1,188 @@
----
-layout: default
-title: hidde-jan.nl
----
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hidde‑Jan — www.hidde-jan.nl</title>
+    <meta name="description" content="Personal page of Hidde‑Jan Jongsma — researcher at TNO, alumnus of the University of Groningen." />
 
-<div id="projects" class="container cf">
+    <style>
+      @import url(https://fonts.bunny.net/css?family=inter:400,500|space-grotesk:500,700);
 
-  <div class="grid">
-    <h2>I'm currently working for&hellip;</h2>
-    <ul id="projects">
-      <li id="tno">
-        <a href="http://www.tno.nl/">
-          TNO.
-        </a>
-      </li>
-    </ul>
+      *,*::before,*::after { box-sizing: border-box }
+      html, body { height: 100%; margin: 0 }
+      body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 
-    <h2>I used to be part of&hellip;</h2>
-    <ul id="old_projects">
-      <li id="rug">
-        <a href="http://www.rug.nl/">
-          University of Groningen,
-        </a>
-      </li>
-      <li id="vergil">
-          Vergil,
-      </li>
-      <li id="solidsquare">
-          Solid Square,
-      </li>
-      <li id="stagedoos">
-          Stage Doos,
-      </li>
-      <li id="idealewoning">
-          Ideale Woning.
-      </li>
-    </ul>
-  </div>
+      /* ── Themes — switch with: document.body.className = 'theme-matcha' ── */
 
-  <div class="grid">
-    <h2>I can be found&hellip;</h2>
-    <ul id="links">
-      <li id="github">
-        <a href="https://github.com/hidde-jan">
-          on GitHub,
-        </a>
-      </li>
-      <li id="linkedin">
-        <a href="http://www.linkedin.com/in/hiddejanjongsma">
-          and LinkedIn,
-        </a>
-      </li>
-      <li id="twitter">
-        <a href="https://twitter.com/hiddejan">
-          and also at @hiddejan.
-        </a>
-      </li>
-    </ul>
-  </div>
+      /* theme-matcha: deep green bg + lilac accent (current default) */
+      .theme-matcha, :root {
+        --bg:     #131a0f;   /* deep forest green */
+        --fg:     #EDE8FF;   /* soft lilac white */
+        --accent: #C084FC;   /* medium lilac */
+        --muted:  color-mix(in oklab, var(--fg) 65%, var(--bg));
+        --max:    640px;
+      }
 
-</div>
+      /* theme-groovy: dark chocolate brown bg + burnt orange accent + warm cream — 70s */
+      .theme-groovy {
+        --bg:     #1C0F00;   /* dark chocolate brown */
+        --fg:     #F5E6C8;   /* warm parchment cream */
+        --accent: #E8640C;   /* burnt orange */
+        --muted:  color-mix(in oklab, var(--fg) 65%, var(--bg));
+      }
 
+      /* theme-navy: dark navy bg + hot pink accent (original) */
+      .theme-navy {
+        --bg:     #09091A;
+        --fg:     #F0EEFF;
+        --accent: #FF2D6F;
+        --muted:  color-mix(in oklab, var(--fg) 65%, var(--bg));
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font-family: Inter, system-ui, sans-serif;
+        font-weight: 400;
+      }
+
+      .wrap { width: min(100% - 48px, var(--max)); margin-inline: auto; }
+
+      /* ── Header ── */
+      header { padding: 72px 0 56px; }
+
+      h1 {
+        font-family: "Space Grotesk", system-ui, sans-serif;
+        font-weight: 700;
+        font-size: clamp(52px, 14vw, 88px);
+        letter-spacing: -3px;
+        line-height: .95;
+        margin: 0;
+        color: var(--fg);
+      }
+
+      h1 .last {
+        display: block;
+        color: var(--accent);
+      }
+
+      /* ── Sections ── */
+      main { padding: 0 0 88px; }
+
+      .section { margin-top: 48px; }
+
+      .section-heading {
+        font-family: "Space Grotesk", system-ui, sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 0 0 18px;
+      }
+
+      .section ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 14px;
+      }
+
+      .section a {
+        color: var(--fg);
+        text-decoration: none;
+        display: block;
+      }
+
+      .section a:hover .link-title {
+        color: var(--accent);
+        transition: color 0.18s ease;
+      }
+
+      .link-title {
+        display: block;
+        font-family: "Space Grotesk", system-ui, sans-serif;
+        font-weight: 500;
+        font-size: clamp(15px, 2.4vw, 17px);
+      }
+
+      .link-sub {
+        display: block;
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 3px;
+        font-weight: 400;
+      }
+
+      /* ── Footer ── */
+      footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; cursor: pointer; user-select: none; }
+    </style>
+  </head>
+  <body class="theme-matcha">
+    <header class="wrap">
+      <h1>Hidde&#8209;Jan<span class="last">Jongsma</span></h1>
+    </header>
+
+    <main class="wrap">
+      <section class="section" aria-labelledby="work-heading">
+        <h2 id="work-heading" class="section-heading">Currently</h2>
+        <ul>
+          <li>
+            <a href="https://www.tno.nl/" target="_blank" rel="noopener">
+              <span class="link-title">TNO</span>
+              <span class="link-sub">The Netherlands Organisation for Applied Scientific Research</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="education-heading">
+        <h2 id="education-heading" class="section-heading">Education</h2>
+        <ul>
+          <li>
+            <a href="https://www.rug.nl/" target="_blank" rel="noopener">
+              <span class="link-title">University of Groningen</span>
+              <span class="link-sub">Rijksuniversiteit Groningen — Groningen, Netherlands</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="online-heading">
+        <h2 id="online-heading" class="section-heading">Find me</h2>
+        <ul>
+          <li>
+            <a href="https://github.com/hidde-jan" target="_blank" rel="noopener">
+              <span class="link-title">GitHub</span>
+              <span class="link-sub">github.com/hidde-jan</span>
+            </a>
+          </li>
+          <li>
+            <a href="http://www.linkedin.com/in/hiddejanjongsma" target="_blank" rel="noopener">
+              <span class="link-title">LinkedIn</span>
+              <span class="link-sub">linkedin.com/in/hiddejanjongsma</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="wrap">
+      <small>© <span id="y"></span> Hidde‑Jan Jongsma · www.hidde-jan.nl</small>
+    </footer>
+
+    <script>
+      document.getElementById('y').textContent = new Date().getFullYear();
+
+      const themes = ['theme-matcha', 'theme-groovy', 'theme-navy'];
+      document.body.className = themes[Math.floor(Math.random() * themes.length)];
+
+      document.querySelector('footer').addEventListener('click', () => {
+        const current = themes.indexOf(document.body.className);
+        document.body.className = themes[(current + 1) % themes.length];
+      });
+    </script>
+  </body>
+</html>
