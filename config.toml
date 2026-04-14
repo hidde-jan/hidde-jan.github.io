@@ -1,0 +1,6 @@
+base_url = "https://www.hidde-jan.nl"
+title = "Hidde-Jan Jongsma"
+compile_sass = false
+build_search_index = false
+
+[markdown]

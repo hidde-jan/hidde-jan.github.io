@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Posts — Hidde&#8209;Jan Jongsma{% endblock %}
+{% block description %}All posts by Hidde‑Jan Jongsma, in reverse chronological order.{% endblock %}
+
+{% block content %}
+<section class="section" aria-labelledby="posts-heading">
+  <h2 id="posts-heading" class="section-heading">Posts</h2>
+  {% if section.pages %}
+  <ul class="post-list">
+    {% for page in section.pages %}
+    <li>
+      <a href="{{ page.permalink }}">
+        <span class="link-title">{{ page.title }}</span>
+        <span class="link-sub">{{ page.date | date(format="%B %-d, %Y") }}{% if page.description %} — {{ page.description }}{% endif %}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p style="color: var(--muted); font-size: 15px;">No posts yet.</p>
+  {% endif %}
+</section>
+{% endblock %}
