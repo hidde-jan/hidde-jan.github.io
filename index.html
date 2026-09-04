@@ -40,11 +40,20 @@
         --muted:  color-mix(in oklab, var(--fg) 65%, var(--bg));
       }
 
+      /* theme-retro: bright sea green bg + hot pink accent — 80s retro */
+      .theme-retro {
+        --bg:     #00A896;   /* bright sea green */
+        --fg:     #FFF3F9;   /* soft pink-white */
+        --accent: #FF3EA5;   /* hot pink */
+        --muted:  color-mix(in oklab, var(--fg) 65%, var(--bg));
+      }
+
       body {
         background: var(--bg);
         color: var(--fg);
         font-family: Inter, system-ui, sans-serif;
         font-weight: 400;
+        overflow-x: hidden;
       }
 
       .wrap { width: min(100% - 48px, var(--max)); margin-inline: auto; }
@@ -52,7 +61,34 @@
       /* ── Header ── */
       header { padding: 72px 0 56px; }
 
-      h1 {
+      /* .hero: full-bleed to viewport width (left:50%+margin-left:-50vw
+         escapes the centered .wrap), so the triangle can reach the true
+         page edge instead of stopping at the content column. */
+      .hero {
+        /* Fixed px (not vw/%) so the triangle's shape never distorts on
+           resize. --tri-x is a parallax offset: moves at 15% of viewport
+           width change (900px = arbitrary reference), so the triangle
+           stays partly off-screen left at narrow widths and "reveals"
+           more of itself as the window widens. */
+        --tri-w: 1070px;
+        --tri-h: 400px;
+        --tri-lift: 96px; /* how far above the title box it reaches */
+        --tri-x: calc(-140px + 0.15 * (100vw - 900px));
+        position: relative;
+        width: 100vw;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+      }
+
+      .hero-title {
+        position: relative;
+        z-index: 1;
+        /* Re-centers text within the full-bleed .hero to match .wrap's
+           original position. Shared by the real title + mask below, so
+           both always land in the same spot. */
+        padding-left: calc((100vw - min(100vw - 48px, var(--max))) / 2);
         font-family: "Space Grotesk", system-ui, sans-serif;
         font-weight: 700;
         font-size: clamp(52px, 14vw, 88px);
@@ -62,9 +98,48 @@
         color: var(--fg);
       }
 
-      h1 .last {
+      .hero-title .last {
         display: block;
         color: var(--accent);
+      }
+
+      /* Accent triangle behind the title, positioned via --tri-x/--tri-lift
+         so it can move independently (parallax) from the text. */
+      .hero-triangle {
+        position: absolute;
+        top: calc(-1 * var(--tri-lift));
+        left: var(--tri-x);
+        z-index: 0;
+        width: var(--tri-w);
+        height: var(--tri-h);
+        background: var(--accent);
+        clip-path: polygon(0 0, 100% 0, 0 100%);
+        pointer-events: none;
+      }
+
+      /* Invisible duplicate title, pinned to .hero (same frame as the real
+         text) so its letters always land exactly on the real ones. Its
+         clip-path uses the same --tri-* vars as .hero-triangle to trace
+         the triangle's current position/size, so the "cut" always matches
+         it even though the triangle moves at a different rate. Letters
+         are transparent except .last, painted in the bg color — so where
+         an accent letter overlaps the triangle, it's "cut" to bg color. */
+      .hero-title--mask {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        color: transparent;
+        clip-path: polygon(
+          var(--tri-x) calc(-1 * var(--tri-lift)),
+          calc(var(--tri-x) + var(--tri-w)) calc(-1 * var(--tri-lift)),
+          var(--tri-x) calc(var(--tri-h) - var(--tri-lift))
+        );
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .hero-title--mask .last {
+        color: var(--bg);
       }
 
       /* ── Sections ── */
@@ -122,7 +197,11 @@
   </head>
   <body class="theme-matcha">
     <header class="wrap">
-      <h1>Hidde&#8209;Jan<span class="last">Jongsma</span></h1>
+      <div class="hero">
+        <div class="hero-triangle" aria-hidden="true"></div>
+        <h1 class="hero-title">Hidde&#8209;Jan<span class="last">Jongsma</span></h1>
+        <h1 class="hero-title hero-title--mask" aria-hidden="true">Hidde&#8209;Jan<span class="last">Jongsma</span></h1>
+      </div>
     </header>
 
     <main class="wrap">
@@ -176,7 +255,7 @@
     <script>
       document.getElementById('y').textContent = new Date().getFullYear();
 
-      const themes = ['theme-matcha', 'theme-groovy', 'theme-navy'];
+      const themes = ['theme-matcha', 'theme-groovy', 'theme-navy', 'theme-retro'];
       document.body.className = themes[Math.floor(Math.random() * themes.length)];
 
       document.querySelector('footer').addEventListener('click', () => {
