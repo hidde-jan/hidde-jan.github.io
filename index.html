@@ -10,7 +10,7 @@
       @import url(https://fonts.bunny.net/css?family=inter:400,500|space-grotesk:500,700);
 
       *,*::before,*::after { box-sizing: border-box }
-      html, body { height: 100%; margin: 0 }
+      html, body { height: 100%; margin: 0; overflow-x: hidden }
       body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 
       /* Smooth theme switches: fade colors instead of snapping instantly. */
@@ -84,7 +84,6 @@
         color: var(--fg);
         font-family: Inter, system-ui, sans-serif;
         font-weight: 400;
-        overflow-x: hidden;
       }
 
       .wrap { width: min(100% - 48px, var(--max)); margin-inline: auto; }
