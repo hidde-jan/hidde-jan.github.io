@@ -173,6 +173,14 @@
         color: var(--bg);
       }
 
+      /* Without clip-path support, the triangle would render as an
+         unclipped rectangle and the mask would paint the whole "Jongsma"
+         in the bg color instead of just the cut region. Hide both and
+         fall back to a plain title rather than showing that. */
+      @supports not (clip-path: polygon(0 0, 0 0, 0 0)) {
+        .hero-triangle, .hero-title--mask { display: none; }
+      }
+
       /* ── Sections ── */
       main { padding: 0 0 88px; }
 
@@ -217,13 +225,13 @@
       .link-sub {
         display: block;
         font-size: 13px;
-        color: var(--muted);
+        color: var(--muted, var(--fg));
         margin-top: 3px;
         font-weight: 400;
       }
 
       /* ── Footer ── */
-      footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; cursor: pointer; user-select: none; }
+      footer { padding: 32px 0 48px; color: var(--muted, var(--fg)); font-size: 13px; cursor: pointer; user-select: none; }
     </style>
   </head>
   <body class="theme-groovy">
