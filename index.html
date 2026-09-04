@@ -13,15 +13,9 @@
       html, body { height: 100%; margin: 0 }
       body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 
-      /* ── Themes — switch with: document.body.className = 'theme-matcha' ── */
-
-      /* theme-matcha: deep green bg + lilac accent (current default) */
-      .theme-matcha, :root {
-        --bg:     #131a0f;   /* deep forest green */
-        --fg:     #EDE8FF;   /* soft lilac white */
-        --accent: #C084FC;   /* medium lilac */
-        --muted:  color-mix(in oklab, var(--fg) 65%, var(--bg));
-        --max:    640px;
+      /* ── Themes — switch with: document.body.className = 'theme-groovy' ── */
+      :root {
+        --max: 640px;
       }
 
       /* theme-groovy: dark chocolate brown bg + burnt orange accent + warm cream — 70s */
@@ -34,9 +28,9 @@
 
       /* theme-navy: dark navy bg + hot pink accent (original) */
       .theme-navy {
-        --bg:     #09091A;
-        --fg:     #F0EEFF;
-        --accent: #FF2D6F;
+        --bg:     #09091A;  /* dark navy */
+        --fg:     #F0EEFF;  /* off-white */
+        --accent: #FF2D6F;  /* hot pink */
         --muted:  color-mix(in oklab, var(--fg) 65%, var(--bg));
       }
 
@@ -45,6 +39,38 @@
         --bg:     #00A896;   /* bright sea green */
         --fg:     #FFF3F9;   /* soft pink-white */
         --accent: #FF3EA5;   /* hot pink */
+        --muted:  color-mix(in oklab, var(--fg) 65%, var(--bg));
+      }
+
+      /* theme-forest-ember: dark forest-black bg + ember accent */
+      .theme-forest-ember {
+        --bg:     #0A1F16;   /* deep forest black-green */
+        --fg:     #F2EFE6;   /* warm off-white */
+        --accent: #FF4E33;   /* ember red-orange */
+        --muted:  color-mix(in oklab, var(--fg) 65%, var(--bg));
+      }
+
+      /* theme-parchment: warm cream/paper bg + deep teal ink accent */
+      .theme-parchment {
+        --bg:     #F4ECDD;   /* warm paper cream */
+        --fg:     #241C12;   /* deep espresso ink */
+        --accent: #0F6F66;   /* deep teal ink */
+        --muted:  color-mix(in oklab, var(--fg) 65%, var(--bg));
+      }
+
+      /* theme-frost: pale ice-gray bg + vivid violet accent */
+      .theme-frost {
+        --bg:     #EAF0F6;   /* pale ice blue-gray */
+        --fg:     #10151F;   /* near-black navy ink */
+        --accent: #7C3AED;   /* vivid violet */
+        --muted:  color-mix(in oklab, var(--fg) 65%, var(--bg));
+      }
+
+      /* theme-radioactive: near-pure-black bg + toxic acid-lime accent */
+      .theme-radioactive {
+        --bg:     #050505;   /* near-pure black */
+        --fg:     #F5FFF0;   /* pale green-white */
+        --accent: #CCFF00;   /* toxic acid lime */
         --muted:  color-mix(in oklab, var(--fg) 65%, var(--bg));
       }
 
@@ -195,7 +221,7 @@
       footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; cursor: pointer; user-select: none; }
     </style>
   </head>
-  <body class="theme-matcha">
+  <body class="theme-groovy">
     <header class="wrap">
       <div class="hero">
         <div class="hero-triangle" aria-hidden="true"></div>
@@ -255,12 +281,19 @@
     <script>
       document.getElementById('y').textContent = new Date().getFullYear();
 
-      const themes = ['theme-matcha', 'theme-groovy', 'theme-navy', 'theme-retro'];
+      const themes = ['theme-groovy', 'theme-navy', 'theme-retro', 'theme-forest-ember', 'theme-parchment', 'theme-frost', 'theme-radioactive'];
       document.body.className = themes[Math.floor(Math.random() * themes.length)];
 
-      document.querySelector('footer').addEventListener('click', () => {
+      function cycleTheme(step = 1) {
         const current = themes.indexOf(document.body.className);
-        document.body.className = themes[(current + 1) % themes.length];
+        document.body.className = themes[(current + step + themes.length) % themes.length];
+      }
+
+      document.querySelector('footer').addEventListener('click', () => cycleTheme(1));
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key.toLowerCase() !== 't' || e.metaKey || e.ctrlKey || e.altKey) return;
+        cycleTheme(e.shiftKey ? -1 : 1);
       });
     </script>
   </body>
