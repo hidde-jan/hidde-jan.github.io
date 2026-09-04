@@ -13,6 +13,11 @@
       html, body { height: 100%; margin: 0 }
       body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 
+      /* Smooth theme switches: fade colors instead of snapping instantly. */
+      *,*::before,*::after {
+        transition: background-color .4s ease, color .4s ease, border-color .4s ease;
+      }
+
       /* ── Themes — switch with: document.body.className = 'theme-groovy' ── */
       :root {
         --max: 640px;
